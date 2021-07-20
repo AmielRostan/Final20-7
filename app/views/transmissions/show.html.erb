@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @transmission.date %>
+</p>
+
+<p>
+  <strong>Program number:</strong>
+  <%= @transmission.program_number %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @transmission.person_id %>
+</p>
+
+<%= link_to 'Edit', edit_transmission_path(@transmission) %> |
+<%= link_to 'Back', transmissions_path %>

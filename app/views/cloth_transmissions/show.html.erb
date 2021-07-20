@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cloth:</strong>
+  <%= @cloth_transmission.cloth_id %>
+</p>
+
+<p>
+  <strong>Transmission:</strong>
+  <%= @cloth_transmission.transmission_id %>
+</p>
+
+<%= link_to 'Edit', edit_cloth_transmission_path(@cloth_transmission) %> |
+<%= link_to 'Back', cloth_transmissions_path %>

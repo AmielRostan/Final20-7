@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cloths</h1>
+
+<% form_tag(:action => :index) do %>
+  <%= select_tag "brand", options_for_select(@brands) %>
+  <%= submit_tag "Filter" %>
+<% end %>
+<% form_tag(:action => :index) do %>
+  <%= select_tag "clothing_type", options_for_select(@clothing_types) %>
+  <%= submit_tag "Filter" %>
+<% end %>
+<form method="GET" action="/cloths">
+  descripcion: <input type="text" name="filter" />
+  <input type="submit" />
+</form>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to "Name", cloths_path(:sort => true, :by => "Name", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Color", cloths_path(:sort => true, :by => "Color", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Description", cloths_path(:sort => true, :by => "Description", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Clothing type", cloths_path(:sort => true, :by => "Clothing_type", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Brand", cloths_path(:sort => true, :by => "Brand", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cloths.each do |cloth| %>
+      <tr>
+        <td><%= cloth.name %></td>
+        <td><%= cloth.color %></td>
+        <td><%= cloth.description %></td>
+        <td><%= cloth.clothing_type.name %></td>
+        <td><%= cloth.brand.name %></td>
+        <td><%= link_to 'Show', cloth %></td>
+        <td><%= link_to 'Edit', edit_cloth_path(cloth) %></td>
+        <td><%= link_to 'Destroy', cloth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @users %>
+
+<br>
+
+<%= link_to 'New Cloth', new_cloth_path %>

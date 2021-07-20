@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cloth Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cloth_types.each do |cloth_type| %>
+      <tr>
+        <td><%= cloth_type.name %></td>
+        <td><%= link_to 'Show', cloth_type %></td>
+        <td><%= link_to 'Edit', edit_cloth_type_path(cloth_type) %></td>
+        <td><%= link_to 'Destroy', cloth_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cloth Type', new_cloth_type_path %>
